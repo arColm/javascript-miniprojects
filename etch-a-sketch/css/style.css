@@ -10,6 +10,17 @@ body {
     min-width:1000px;
 }
 
+.top {
+    display:flex;
+    flex-direction:column;
+}
+
+.top button {
+    padding:10 px;
+    margin:10px;
+
+}
+
 .canvas{
-    border: 1px solid white;
+    border: 5px solid white;
 }
