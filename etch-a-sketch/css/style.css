@@ -1,0 +1,15 @@
+body {
+    margin:0;
+    background-color:rgb(34, 34, 49);
+    font-family:"Roboto",sans-serif;
+    font-size:21px;
+    display:flex;
+    flex-direction:column;
+    padding:5% 0;
+    align-items:center;
+    min-width:1000px;
+}
+
+.canvas{
+    border: 1px solid white;
+}

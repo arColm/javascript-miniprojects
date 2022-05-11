@@ -1,6 +1,6 @@
 # javascript-miniprojects
 Collection of small javascript projects
 
-rock-paper-scissors : play against a computer in rock paper scissors.
+**rock-paper-scissors** : Play against a computer in rock paper scissors.
 
-etch-a-sketch : draw on a small canvas.
+**etch-a-sketch** : Draw on a small canvas.
