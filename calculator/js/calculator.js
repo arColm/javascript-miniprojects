@@ -92,6 +92,9 @@ buttons.forEach(button => {
             
 
             case ".":
+                if(currentNum.indexOf(".")<=0) {
+                    appendCurrentNum(".");
+                }
                 break;
             case "=":
                 evaluateExpression();
