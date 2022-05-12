@@ -43,6 +43,9 @@ buttons.forEach(button => {
     button.addEventListener("click", e=> {
         switch(button.innerHTML) {
             case "9": case "8": case "7": case "6": case "5": case "4": case "3": case "2": case "1": case "0":
+                if(storedNum.charAt(storedNum.length-1)==="=") {
+                    storedNum="0+";
+                }
                 appendCurrentNum(button.innerHTML);
                 break;
 
