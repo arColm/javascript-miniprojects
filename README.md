@@ -6,3 +6,7 @@ Collection of small javascript projects
 **etch-a-sketch** : Draw on a small canvas.
 
 **calculator** : simple calculator
+
+**sign-up-form** : sign up form to demonstrate designing a form and further reinforcing css principles
+
+**admin-dashboard** : admin dashboard to demonstrate css grid principles.
