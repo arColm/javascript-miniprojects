@@ -55,6 +55,11 @@ function displayLibrary() {
         p.appendChild(bookAuthor);
         div.appendChild(p);
 
+        //Change book color based on whether it is finished or not
+        if(book.read) {
+            div.style.backgroundColor="var(--finished-book-color)";
+        }
+
         //Add remove button
         p = document.createElement("button");
         p.setAttribute("type","button");
@@ -66,10 +71,19 @@ function displayLibrary() {
             displayLibrary();
         })
 
-
-
-
         library.appendChild(div);
+
+        //Add ability to toggle the book's read status
+        div.addEventListener("click", e=> {
+            if(book.read) {
+                book.read = false;
+                div.style.backgroundColor="var(--book-color)";
+            } else {
+                book.read = true;
+                div.style.backgroundColor="var(--finished-book-color)";
+
+            }
+        })
     }
 }
 
