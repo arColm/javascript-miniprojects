@@ -99,6 +99,10 @@ button {
     visibility:hidden;
 }
 
-input[id="title"] {
-
+.book button {
+    background-color:rgb(87, 0, 0);
+}
+.book button:hover {
+    transform:scale(1.1);
+    background-color:red;
 }

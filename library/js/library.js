@@ -38,7 +38,8 @@ function displayLibrary() {
     library.replaceChildren();
     
     //Add all books to the library
-    myLibrary.forEach(book => {
+    for(let i=0;i<myLibrary.length;i++) {
+        let book = myLibrary[i];
         let div = document.createElement("div");
         div.setAttribute("class","book");
         //Add title
@@ -54,8 +55,22 @@ function displayLibrary() {
         p.appendChild(bookAuthor);
         div.appendChild(p);
 
+        //Add remove button
+        p = document.createElement("button");
+        p.setAttribute("type","button");
+        p.appendChild(document.createTextNode("Remove"));
+        div.appendChild(p);
+
+        p.addEventListener("click", e => {
+            myLibrary.splice(i,1);
+            displayLibrary();
+        })
+
+
+
+
         library.appendChild(div);
-    })
+    }
 }
 
 const newBookButton = document.querySelector(".new-book");
