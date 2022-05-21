@@ -5,24 +5,100 @@
     font-size:24px;
     background-color:rgb(48, 48, 48);
     color:white;
+    --book-color:rgb(95,51,16);
 }
 
 .library {
     display:flex;
     flex-direction:column;
     gap:10px;
+    padding:50px;
 }
 
 .book {
     height:100px;
     width:400px;
     border:1px solid black;
-    background-color:rgb(95, 51, 16);
+    background-color:var(--book-color);
     padding:10px;
     display:flex;
     align-items:center;
+    gap:10px;
+    box-shadow:-10px 0 0 0 beige;
+    border-left:3px solid beige;
+}
+.book:hover {
+    transform: scale(1.03);
 }
 
 .book > * {
-    background-color:rgb(95,51,16);
+    background-color:var(--book-color);
+
+}
+
+.title {
+    padding:5px;
+    font-style:italic;
+}
+
+.book-form-window {
+    padding:50px;
+    z-index:2;
+    border:1px solid rgb(114, 114, 114);
+    background-color:rgb(68, 68, 68);
+    position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    width:max(400px,40%);
+    visibility:hidden;
+
+    top:0;
+    bottom:0;
+    margin-top:auto;
+    margin-bottom:auto;
+    height:max-content;
+    z-index:3;
+}
+
+.book-form-window form{
+    background-color:rgb(68, 68, 68);
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.book-form-window form * {
+    background-color:rgb(68, 68, 68);
+}
+
+button {
+    background-color:rgb(126, 126, 126);
+}
+
+.book-form-window button {
+    background-color:rgb(126, 126, 126);
+}
+
+.close-form {
+    position:absolute;
+    border-radius:10px;
+    right:10px;
+    top:10px;
+}
+
+.book-form-background {
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:black;
+    opacity:25%;
+    top:0;
+    left:0;
+    visibility:hidden;
+}
+
+input[id="title"] {
+
 }

@@ -41,15 +41,71 @@ function displayLibrary() {
     myLibrary.forEach(book => {
         let div = document.createElement("div");
         div.setAttribute("class","book");
-        let p = document.createElement("p");
-        let bookName = document.createTextNode(`${book.title}`);
+        //Add title
+        let p = document.createElement("h2");
+        let bookName = document.createTextNode(book.title);
         p.appendChild(bookName);
+        p.setAttribute("class","title");
         div.appendChild(p);
+
+        //Add author
+        p = document.createElement("p");
+        let bookAuthor = document.createTextNode(book.author);
+        p.appendChild(bookAuthor);
+        div.appendChild(p);
+
         library.appendChild(div);
     })
 }
 
+const newBookButton = document.querySelector(".new-book");
+const bookFormWindow = document.querySelector(".book-form-window");
+const bookFormBackground = document.querySelector(".book-form-background");
+const bookFormClose = document.querySelector(".close-form");
+
+//Open the book form
+function openBookForm() {
+    bookFormWindow.style.visibility="visible";
+    bookFormBackground.style.visibility="visible";
+}
+
+newBookButton.addEventListener("click", e => {
+    openBookForm();
+})
+
+//Close the book form
+function closeBookForm() {
+    bookFormWindow.style.visibility="hidden";
+    bookFormBackground.style.visibility="hidden";
+}
+
+let closeBookFormItems = [bookFormClose,bookFormBackground];
+closeBookFormItems.forEach(b => {
+    b.addEventListener("click", e => {
+        closeBookForm();
+    })
+})
+
+const bookFormSubmit = document.querySelector("#submit-form");
+//Book is created
+bookFormSubmit.addEventListener("click", e => {
+    let newTitle = document.querySelector("input[id=title]").value;
+    let newAuthor = document.querySelector("input[id=author]").value;
+    let newNumPages = document.querySelector("input[id=numPages]").value;
+    let newRead = document.querySelector("input[id=read]").checked;
+
+
+    addBookToLibrary(newTitle,newAuthor,newNumPages,newRead);
+    displayLibrary();
+    document.querySelector("input[id=title]").value = "";
+    document.querySelector("input[id=author]").value = "";
+    document.querySelector("input[id=numPages]").value="";
+    document.querySelector("input[id=read]").checked=false;
+    closeBookForm();
+    console.log(myLibrary);
+})
+
+
 addBookToLibrary("A","author1",20,true);
 addBookToLibrary("B","author2",34,false);
 displayLibrary();
-
