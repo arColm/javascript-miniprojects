@@ -10,3 +10,5 @@ Collection of small javascript projects
 **sign-up-form** : sign up form to demonstrate designing a form and further reinforcing css principles
 
 **admin-dashboard** : admin dashboard to demonstrate css grid principles.
+
+**library** : page where you can add and remove book elements from a library. Practices basic javascript object manipulation principles
