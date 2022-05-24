@@ -57,11 +57,14 @@ const gameBoard = (() => {
      * @returns 0 if no error occured.
      * @returns 1 if there already exists a tile at this location
      * @returns 2 if there is an invalid input.
+     * @returns 3 if there is already a winner.
      */
     function placeTile(tileType,x,y) {
         if(tileType!=="X"&&tileType!=="O") return 2;
         if(x<0||x>2) return 2;
         if(y<0||y>2) return 2;
+        
+        if(checkWin()!==0) return 3;
 
         if(boardArray[y][x]===" ") {
             boardArray[y][x]=tileType;
