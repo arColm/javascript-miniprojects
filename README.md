@@ -12,3 +12,5 @@ Collection of small javascript projects
 **admin-dashboard** : admin dashboard to demonstrate css grid principles.
 
 **library** : page where you can add and remove book elements from a library. Practices basic javascript object manipulation principles
+
+**tic-tac-toe** : website to play tic tac toe. demonstrates basic principles of modules and factory functions.
