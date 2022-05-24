@@ -117,10 +117,21 @@ const gameBoard = (() => {
         textDisplay.showTurn(playerTurn);
     }
 
+    function resetBoard() {
+        boardArray = [];
+        for(let i=0;i<=2;i++) {
+            boardArray.push([" "," "," "]);
+        }
+        playerTurn=1;
+        updateBoard();
+        textDisplay.showTurn(playerTurn);
+    }
+
     return {
         updateBoard,
         placeTile,
-        checkWin
+        checkWin,
+        resetBoard
     };
 })();
 
@@ -158,6 +169,24 @@ const textDisplay =(() => {
 
 })();
 
+//Constains miscellaneous buttons, including a reset.
+const miscButtons =(() => {
+    const resetButton = document.querySelector("button#reset");
+
+    function initialize() {
+        resetButton.addEventListener("click", e=> {
+            gameBoard.resetBoard();
+        })
+    }
+
+
+
+    return {
+        initialize
+    }
+})();
+
 
 gameBoard.updateBoard();
 textDisplay.showTurn(1);
+miscButtons.initialize();
