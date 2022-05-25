@@ -7,11 +7,13 @@ let myLibrary = [];
  * @param {*Number} numPages - Number of pages in the book
  * @param {*Boolean} read - Status of whether the book has been read.
  */
-function Book(title,author,numPages,read) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.read = read;
+class Book {
+    constructor(title,author,numPages,read) {
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.read = read;
+    }
 }
 
 /**
