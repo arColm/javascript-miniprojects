@@ -20,25 +20,12 @@ function createProject(name) {
     return newProject;
 }
 
-function renderProjectList() {
-    const sidebar = document.querySelector("#sidebar");
-    sidebar.replaceChildren();
-    let header = document.createElement("h1");
-    header.innerHTML = "Projects";
-    sidebar.appendChild(header);
-    projects.forEach(project => {
-        let div = document.createElement("div");
-        div.setAttribute("class","project");
-        sidebar.appendChild(div);
+function getProjectList() {
+    return projects;
+}
 
-        let projectName = document.createElement("p");
-        projectName.innerHTML = `${project.getName()}`;
-        div.appendChild(projectName);
+function createTask() {
 
-        let numOfTodos = document.createElement("p");
-        numOfTodos.innerHTML = `${project.getTodoList().length}`;
-        div.appendChild(numOfTodos);
-    })
-};
+}
 
-export {createProject,renderProjectList};
+export { getProjectList, createProject};
