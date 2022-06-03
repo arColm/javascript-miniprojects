@@ -8,4 +8,4 @@ function renderTodo() {
 
 };
 
-export {renderProjects};
+export {};

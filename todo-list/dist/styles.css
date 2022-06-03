@@ -6,6 +6,12 @@
     margin:0;
 }
 
+h1 {
+    font-size:72px;
+    padding:20px;
+    text-align:center;
+}
+
 body {
     display:flex;
     height:100vh;
@@ -24,4 +30,77 @@ body {
 #header {
     height:25vh;
     background-color:rgb(109, 0, 0);
+}
+
+.project {
+    display:flex;
+    padding:20px 10px;
+    border:solid rgba(59, 59, 59, 0.404);
+    border-width: 3px 0;
+
+}
+.project p:first-child {
+    width:80%;
+}
+.project p:last-child {
+    width:20%;
+    text-align:right;
+}
+
+#header {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.buttons {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:15%;
+}
+
+button {
+    padding:20px;
+    font-size:30px;
+    font-weight:bold;
+    width:30%;
+}
+
+
+
+
+
+
+
+#popup {
+    visibility:hidden;
+    position:absolute;
+    background-color:rgb(0, 70, 6);
+    display:flex;
+    flex-direction:column;
+    left:20%;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width:200px;
+    height:200px;
+    font-size:16px;
+    padding:20px;
+    z-index:1;
+}
+
+#popup button {
+    width:90%;
+    margin:auto;
+    font-size:16px;
+}
+
+#popup-background {
+    background-color:rgba(0, 0, 0, 0.267);
+    position:absolute;
+    width:100%;
+    height:100%;
+    visibility:hidden;
 }
