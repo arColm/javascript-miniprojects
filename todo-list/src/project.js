@@ -66,11 +66,18 @@ class Task {
 
 
 function createTask(projectName, taskName, taskDate) {
-    let task = new Task(taskName, taskDate);
     let project = getProjectWithName(projectName);
     if(project!== undefined) {
-        console.log(project);
-        project.addTodo(task);
+        if(project.getTodoList().find(t => {
+            return t.name ===taskName;
+        })===undefined) {
+            let task = new Task(taskName, taskDate);
+            project.addTodo(task);
+        } else {
+            console.log("Duplicate task name");
+        }
+    } else {
+        console.log("Invalid project name");
     }
 }
 
