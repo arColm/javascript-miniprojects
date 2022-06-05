@@ -36,7 +36,9 @@ body {
 
 .project {
     display:flex;
-    padding:20px 10px;
+    padding:0 10px;
+    align-items:center;
+    height:69px;
     border:solid rgba(59, 59, 59, 0.404);
     border-width: 3px 0;
 
@@ -50,6 +52,22 @@ body {
 .project p:last-child {
     width:20%;
     text-align:right;
+}
+
+
+#remove-button {
+    position:relative;
+    left:60px;
+    width:40px;
+    height:100%;
+    padding:0;
+    font-size:12px;
+    z-index:2;
+    border:0;
+    background-color:var(--sidebar-color);
+}
+#remove-button:hover {
+    background-color:darkred;
 }
 
 #header {

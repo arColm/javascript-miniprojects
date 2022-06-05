@@ -10,23 +10,6 @@ const todoList = document.querySelector("#todo-list");
 
 let currentProject = "";
 
-
-/**
- * This function adds a click event to all projects in the sidebar.
- * When a project is clicked, the current project is changed to that project
- */
- function addProjectClickEvent() {
-    const sidebar = document.querySelector("#sidebar");
-    sidebar.childNodes.forEach(child => {
-        if(child.nodeName==="DIV") {
-            child.addEventListener("click", () => {
-                currentProject = child.firstChild.innerHTML;
-                header.renderHeader(currentProject);
-            })
-        }
-    })
-}
-
 /**
  * This function renders all projects onto the sidebar.
  */
@@ -37,24 +20,46 @@ function renderProjectList() {
     let header = document.createElement("h1");
     header.innerHTML = "Projects";
     sidebar.appendChild(header);
-    projects.forEach(project => {
+
+    projects.forEach(proj => {
         let div = document.createElement("div");
         div.setAttribute("class","project");
         sidebar.appendChild(div);
 
         let projectName = document.createElement("p");
-        projectName.innerHTML = `${project.getName()}`;
+        projectName.innerHTML = `${proj.getName()}`;
         div.appendChild(projectName);
 
         let numOfTodos = document.createElement("p");
-        numOfTodos.innerHTML = `${project.getTodoList().length}`;
+        numOfTodos.innerHTML = `${proj.getTodoList().length}`;
         div.appendChild(numOfTodos);
         
+        let removeProjectButton = document.createElement("button");
+        removeProjectButton.setAttribute("type","button");
+        removeProjectButton.setAttribute("id","remove-button");
+        removeProjectButton.innerHTML = "X";
+        div.appendChild(removeProjectButton);
+
+        
         div.addEventListener("click", () => {
-            console.log("aaa");
-            currentProject = project.getName();
+            currentProject = proj.getName();
             renderHeader(currentProject);
             renderTasks(currentProject);
+        })
+
+        div.addEventListener("mouseover",() => {
+            removeProjectButton.style.visibility="visible";
+        })
+        div.addEventListener("mouseleave",() => {
+            removeProjectButton.style.visibility="hidden";
+        })
+
+        removeProjectButton.addEventListener("click",e => {
+            let projectName = proj.getName();
+            project.removeProject(projectName);
+            renderProjectList();
+            renderHeader();
+            e.stopPropagation();
         })
     })
 };

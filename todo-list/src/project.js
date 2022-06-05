@@ -31,6 +31,15 @@ function getProjectWithName(projectName) {
     return project;
 }
 
+function removeProject(projectName) {
+    let project = getProjectWithName(projectName);
+    if(project!==undefined) {
+        projects.splice(projects.findIndex(proj => {
+            return proj.getName===project.getName();
+        }),1);
+    }
+}
+
 class Task {
     #name;
     #date;
@@ -63,5 +72,6 @@ export {
     getProjectList, 
     createProject, 
     getProjectWithName, 
-    createTask
+    createTask,
+    removeProject
 };
