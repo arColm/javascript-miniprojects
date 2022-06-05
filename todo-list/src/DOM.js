@@ -185,6 +185,7 @@ function newTaskPopup() {
         if(name!==""&&date!=="") {
             project.createTask(currentProject,name,date);
             renderTasks(currentProject);
+            renderProjectList();
             closePopup();
         }
     })

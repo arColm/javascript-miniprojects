@@ -15,6 +15,11 @@ const Project = (name) => {
 }
 
 function createProject(name) {
+    if(getProjectWithName(name)!==undefined) {
+        console.log("Duplicate project name");
+        return -1;
+    }
+
     let newProject = Project(name);
     projects.push(newProject);
     return newProject;
@@ -34,9 +39,10 @@ function getProjectWithName(projectName) {
 function removeProject(projectName) {
     let project = getProjectWithName(projectName);
     if(project!==undefined) {
-        projects.splice(projects.findIndex(proj => {
-            return proj.getName===project.getName();
-        }),1);
+        let index = projects.findIndex(proj => {
+            return proj.getName()===projectName;
+        });
+        projects.splice(index,1);
     }
 }
 
