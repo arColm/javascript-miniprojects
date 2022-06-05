@@ -56,7 +56,7 @@ body {
 }
 
 
-#remove-button {
+.remove-button {
     position:relative;
     left:64px;
     width:40px;
@@ -69,11 +69,14 @@ body {
     border:outset rgba(59, 59, 59, 0.404);
     border-left:0;
     visibility:hidden;
+    transition-property:background-color;
+    transition-duration:0.5s;
 }
-#remove-button:hover {
+.remove-button:hover {
     transition-duration:0.5s;
     background-color:darkred;
 }
+
 
 #header {
     display:flex;
@@ -145,4 +148,10 @@ button {
     justify-content:space-between;
     border-bottom:2px solid black;
     margin-bottom:20px;
+    transition-duration:1s;
+}
+
+#todo-list div:hover {
+    transition-duration:1s;
+    background-color:rgba(157, 219, 157, 0.247);
 }

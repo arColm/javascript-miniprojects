@@ -36,7 +36,7 @@ function renderProjectList() {
         
         let removeProjectButton = document.createElement("button");
         removeProjectButton.setAttribute("type","button");
-        removeProjectButton.setAttribute("id","remove-button");
+        removeProjectButton.setAttribute("class","remove-button");
         removeProjectButton.innerHTML = "X";
         div.appendChild(removeProjectButton);
 
@@ -213,6 +213,15 @@ function renderTasks(projectName) {
             let taskDate = document.createElement("p");
             taskDate.innerHTML = task.date;
             div.appendChild(taskDate);
+
+            div.addEventListener("click", () => {
+                div.style.opacity="0";
+                setTimeout(() => {
+                    project.removeTask(proj.getName(),task.name);
+                    renderTasks(projectName);
+                    renderProjectList();
+                },1000);
+            })
         })
     }
 }

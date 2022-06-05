@@ -74,10 +74,32 @@ function createTask(projectName, taskName, taskDate) {
     }
 }
 
+function getTaskIndexWithName(projectName,taskName) {
+    let project = getProjectWithName(projectName);
+    console.log(project);
+    if(project===undefined) return -1;
+    let taskList = project.getTodoList();
+    let taskIndex = taskList.findIndex(t => {
+        return t.name === taskName;
+    });
+    return taskIndex;
+}
+
+function removeTask(projectName,taskName) {
+    let taskIndex = getTaskIndexWithName(projectName,taskName);
+    if(taskIndex===-1) return "Invalid task name";
+    let project = getProjectWithName(projectName);
+    if(project===undefined) return "Invalid Project name";
+
+    project.getTodoList().splice(taskIndex,1);
+    return 0;
+}
+
 export { 
     getProjectList, 
     createProject, 
     getProjectWithName, 
     createTask,
-    removeProject
+    removeProject,
+    removeTask
 };
