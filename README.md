@@ -14,3 +14,5 @@ Collection of small javascript projects
 **library** : page where you can add and remove book elements from a library. Practices basic javascript object manipulation principles
 
 **tic-tac-toe** : website to play tic tac toe. demonstrates basic principles of modules and factory functions.
+
+**todo-list** : website where one can create projects and add tasks to these projects. Practicing simple OOP principles
