@@ -1,1 +1,4 @@
-console.log("HELLO WORLD");
+import * as DOM from "./DOM.js";
+
+
+
