@@ -45,3 +45,6 @@ table {
 tr {
     border:1px solid white;
 }
+table tr:first-child {
+    background-color:rgb(130,130,130);
+}

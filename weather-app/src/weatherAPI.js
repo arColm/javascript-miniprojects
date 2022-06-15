@@ -36,10 +36,9 @@ async function callWeatherAPI(location) {
         .then( response => {
             let info = {
                 "description":response["weather"][0]["description"],
-                "temp":response["main"]["feels_like"]-273,
+                "temp":Math.round((response["main"]["feels_like"]-273)*100)/100,
                 "wind":response["wind"]["speed"]
             };
-            console.log(response);
             return info;
         })
 
