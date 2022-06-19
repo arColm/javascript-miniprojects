@@ -18,3 +18,5 @@ Collection of small javascript projects
 **todo-list** : website where one can create projects and add tasks to these projects. Practicing simple OOP principles
 
 **weather-app** : Simple website to display weather information for a location. Practicing utilization of APIs.
+
+**battleship** : Game of battleship where the player plays against a computer. Primarily practicing simple TDD principles.
