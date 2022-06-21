@@ -18,6 +18,15 @@ class Gameboard {
 
     addShip(Ship) {
         this.ships.push(Ship);
+        return this.ships;
+    }
+
+    getSize() {
+        return this.size;
+    }
+
+    getBoard() {
+        return this.board;
     }
 }
 
