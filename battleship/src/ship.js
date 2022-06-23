@@ -10,7 +10,7 @@ class Ship {
      * True if no parts of the ship remains. False otherwise.
      */
     isSunk() {
-        if(activePositions.isEmpty()) {
+        if(this.activePositions.isEmpty()) {
             return true;
         }
         return false;
@@ -24,8 +24,12 @@ class Ship {
      * @param {Number} y 
      */
     hit(x,y) {
-        if(this.activePositions.includes([x,y])) {
-            this.activePositions.splice(this.activePositions.indexOf([x,y]),1);
+        console.log([x,y]);
+        let index = this.activePositions.findIndex(shipPart => {
+            return (shipPart[0]===x && shipPart[1]===y);
+        });
+        if(index>=0) {
+            this.activePositions.splice(index,1);
             return true;
         }
         return false;
