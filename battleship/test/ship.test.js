@@ -4,7 +4,7 @@ test("verify jest is properly setup", () => {
     expect(2+2).toBe(4);
 })
 
-test("Create a ship with appropriate attributes. (verifying jest is properly setup)", () => {
+test("Create a ship with correctly setup attributes", () => {
     let aShip = ship.createShip(3,[3,4],"north");
     expect(typeof aShip).toBe("object");
 
