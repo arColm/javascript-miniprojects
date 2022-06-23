@@ -5,11 +5,29 @@ class Ship {
         this.length = activePositions.length;
     }
 
+    /**
+     * This function returns whether or not this ship is completely sunk.
+     * True if no parts of the ship remains. False otherwise.
+     */
     isSunk() {
         if(activePositions.isEmpty()) {
             return true;
         }
+        return false;
+    }
 
+    /**
+     * This function takes two coordinates and checks if part of this ship exists
+     * at those coordinates. If so, that part of the ship is removed, and the
+     * function returns true. Otherwise returns false.
+     * @param {Number} x 
+     * @param {Number} y 
+     */
+    hit(x,y) {
+        if(this.activePositions.includes([x,y])) {
+            this.activePositions.splice(this.activePositions.indexOf([x,y]),1);
+            return true;
+        }
         return false;
     }
 }

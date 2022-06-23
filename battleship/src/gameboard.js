@@ -1,3 +1,4 @@
+import * as ship from "./ship.js";
 
 /**
  * This class represents a gameboard of a certain specified size. On the gameboard is an array of ships, which
@@ -28,6 +29,8 @@ class Gameboard {
     getBoard() {
         return this.board;
     }
+
+    
 }
 
 /**
