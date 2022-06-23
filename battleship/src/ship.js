@@ -35,13 +35,14 @@ function createShip(length, headPosition,directionFaced) {
         throw new Error("Invalid head position. Head position must have 2 coordinates [x,y].")
     }
 
-    if(directionFaced !="north" ||directionFaced !="west") {
+    if(directionFaced !=="north" &&directionFaced !=="west") {
+        console.log(directionFaced);
         throw new Error("Invalid direction faced");
     }
 
     let activePositions = [];
     for(let i=0;i<length;i++) {
-        activePositions.push(headPosition);
+        activePositions.push([headPosition[0],headPosition[1]]);
         if(directionFaced==="north") {
             headPosition[1]++;
         }
@@ -49,7 +50,6 @@ function createShip(length, headPosition,directionFaced) {
             headPosition[0]++;
         }
     }
-
     return new Ship(activePositions);
 }
 
