@@ -5,6 +5,10 @@ class Ship {
         this.length = activePositions.length;
     }
 
+    getActivePositions() {
+        return this.activePositions;
+    }
+
     /**
      * This function returns whether or not this ship is completely sunk.
      * True if no parts of the ship remains. False otherwise.
@@ -62,13 +66,15 @@ function createShip(length, headPosition,directionFaced) {
     }
 
     let activePositions = [];
+    let x = headPosition[0];
+    let y = headPosition[1];
     for(let i=0;i<length;i++) {
-        activePositions.push([headPosition[0],headPosition[1]]);
+        activePositions.push([x,y]);
         if(directionFaced==="north") {
-            headPosition[1]++;
+            y++;
         }
         if(directionFaced==="west") {
-            headPosition[0]++;
+            x++;
         }
     }
     return new Ship(activePositions);
