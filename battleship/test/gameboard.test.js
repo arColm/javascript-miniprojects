@@ -40,6 +40,21 @@ test("Adding a ship to a board", () => {
     }
 })
 
+test("Adding a ship in an invalid location", () => {
+    let testBoard = gameboard.createGameboard(5);
+
+    expect(() => {
+        testBoard.addShip(4,[2,3],"west")
+    }).toThrow("Ship is out of bounds");
+})
+
+test("Adding a ship in a location that already has a ship", () => {
+    let testBoard = gameboard.createGameboard(5);
+    testBoard.addShip(3,[3,2],"north");
+    expect(() => {
+        testBoard.addShip(2,[2,3],"west")
+    }).toThrow("A ship already exists in this position");
+})
 
 test("Receiving an attack with invalid coordinates on a board returns an error", () => {
     let testBoard = gameboard.createGameboard(5);
