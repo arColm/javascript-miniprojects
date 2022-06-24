@@ -24,7 +24,6 @@ class Ship {
      * @param {Number} y 
      */
     hit(x,y) {
-        console.log([x,y]);
         let index = this.activePositions.findIndex(shipPart => {
             return (shipPart[0]===x && shipPart[1]===y);
         });
