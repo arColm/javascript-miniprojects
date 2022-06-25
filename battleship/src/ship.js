@@ -14,7 +14,7 @@ class Ship {
      * True if no parts of the ship remains. False otherwise.
      */
     isSunk() {
-        if(this.activePositions.isEmpty()) {
+        if(this.activePositions.length===0) {
             return true;
         }
         return false;

@@ -1,7 +1,13 @@
 import * as ship from "./ship.js";
 
 /**
- * This class represents a gameboard of a certain specified size. On the gameboard is an array of ships, which
+ * This class represents a gameboard of a certain specified size. 
+ * On the gameboard is an array of ships, which have their locations also
+ * represented in a 2d array in this object. In this 2d array:
+ * 0 --- empty spot, unhit
+ * 1 --- ship part, unhit
+ * 2 --- empty spot, hit
+ * 3 --- ship part, hit
  */
 class Gameboard {
     constructor(size) {
@@ -40,6 +46,7 @@ class Gameboard {
      */
     addShip(length, headPosition,directionFaced) {
         let newShip = ship.createShip(length, headPosition,directionFaced);
+        //Checking for invalid parameters
         switch(directionFaced) {
             case "north":
                 if(headPosition[1]+length>this.size) {
@@ -64,13 +71,13 @@ class Gameboard {
             }
         })
 
+        //Adding to board
         newShip.getActivePositions().forEach(shipPart => {
             let x = shipPart[0];
             let y = shipPart[1];
 
             this.board[y][x]=1;
         })
-
 
         this.ships.push(newShip);
 
@@ -91,15 +98,24 @@ class Gameboard {
             throw new Error("Invalid coordinates");
         }
 
-        this.ships.forEach(ship => {
+        if(this.ships.some(ship => {
             if(ship.hit(x,y)) {
+                this.board[y][x]=3;
                 return true;
-            };
-        })
-
-        return false;
+            }
+        })) {
+           return true; 
+        } else {
+            this.board[y][x]=2;
+            return false;
+        }
     }
     
+    allShipsSunk() {
+        return this.ships.every(ship => {
+            return ship.isSunk();
+        })
+    }
 }
 
 /**
