@@ -1,6 +1,8 @@
 import * as Gameboard from "./gameboard.js";
 
-const contentDiv = docment.querySelector("#content");
+const contentDiv = document.querySelector("#content");
+const BOARDSIZE = 6;
+
 
 function createGameboardElement(size) {
     const gameboard = Gameboard.createGameboard(size);
@@ -20,4 +22,23 @@ function createGameboardElement(size) {
 
 
     return gameboardDiv;
+}
+
+
+
+function initializeGame() {
+    contentDiv.replaceChildren();
+    const playerBoard = createGameboardElement(BOARDSIZE);
+    playerBoard.setAttribute("class","gameboard playerBoard");
+
+    const computerBoard = createGameboardElement(BOARDSIZE);
+    computerBoard.setAttribute("class","gameboard computerBoard");
+
+    contentDiv.appendChild(playerBoard);
+    contentDiv.appendChild(computerBoard);
+}
+
+
+export {
+    initializeGame
 }
