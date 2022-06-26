@@ -3,6 +3,9 @@ import * as Gameboard from "./gameboard.js";
 const contentDiv = document.querySelector("#content");
 const BOARDSIZE = 6;
 
+/**
+ * This object stores information for a given game, and the their HTML board elements
+ */
 class Game {
     constructor(playerBoard,playerBoardElement,computerBoard,computerBoardElement) {
         this.playerBoard=playerBoard;
@@ -96,6 +99,7 @@ function refreshBoard(game,player) {
     }
 }
 
+
 function initializeGame() {
     contentDiv.replaceChildren();
     const playerBoard = Gameboard.createGameboard(BOARDSIZE);
@@ -109,15 +113,11 @@ function initializeGame() {
     contentDiv.appendChild(playerBoardElement);
     contentDiv.appendChild(computerBoardElement);
 
-    return {
-        playerBoard:playerBoard,
-        playerBoardElement:playerBoardElement,
-        computerBoard:computerBoard,
-        computerBoardElement:computerBoardElement
-    }
+    return new Game(playerBoard,playerBoardElement,computerBoard,computerBoardElement);
 }
 
 
 export {
-    initializeGame
+    initializeGame,
+    randomizeCPUBoard
 }

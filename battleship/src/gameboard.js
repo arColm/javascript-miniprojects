@@ -50,8 +50,6 @@ class Gameboard {
         switch(directionFaced) {
             case "north":
                 if(headPosition[1]+length>this.size) {
-                    console.log(headPosition)
-                    console.log(length);
                     throw new Error("Ship is out of bounds");
                 }
                 break;
@@ -61,15 +59,17 @@ class Gameboard {
                 }
                 break;
         }
-
+        let collision = false;
         newShip.getActivePositions().forEach(shipPart => {
             let x = shipPart[0];
             let y = shipPart[1];
 
             if(this.board[y][x]!==0) {
-                throw new Error("A ship already exists in this position");
+                collision = true;
+                return -1;
             }
         })
+        if(collision) return -1;
 
         //Adding to board
         newShip.getActivePositions().forEach(shipPart => {
@@ -115,6 +115,50 @@ class Gameboard {
         return this.ships.every(ship => {
             return ship.isSunk();
         })
+    }
+
+    /**
+     * This function randomly places 5 ships on the board.
+     * 1 length=3,
+     * 2 length=2,
+     * 2 length=1
+     */
+    randomizeBoard(BOARDSIZE) {
+        //Place 1 length=3 ships
+        let orientation = Math.random()>0.5 ? "north" : "west";
+        let isPlaced = false;
+        while(!isPlaced) {
+            let randomRow = Math.floor(Math.random()*(BOARDSIZE-2));
+            let randomColumn = Math.floor(Math.random()*(BOARDSIZE-2));
+            if(this.addShip(3,[randomColumn,randomRow],orientation)!==-1) {
+                isPlaced = true;
+            }
+        }
+        //Place 2 length=2 ships
+        for(let i=0;i<2;i++) {
+            orientation = Math.random() > 0.5 ? "north":"west";
+            isPlaced = false;
+            while(!isPlaced) {
+                let randomRow = Math.floor(Math.random()*(BOARDSIZE-1));
+                let randomColumn = Math.floor(Math.random()*(BOARDSIZE-1));
+                if(this.addShip(2,[randomColumn,randomRow],orientation)!==-1) {
+                    isPlaced = true;
+                }
+            }
+        }
+        //Place 2 length=1 ships
+        for(let i=0;i<2;i++) {
+            orientation = Math.random() > 0.5 ? "north":"west";
+            isPlaced = false;
+            while(!isPlaced) {
+                let randomRow = Math.floor(Math.random()*BOARDSIZE);
+                let randomColumn = Math.floor(Math.random()*BOARDSIZE);
+                if(this.addShip(1,[randomColumn,randomRow],orientation)!==-1) {
+                    isPlaced = true;
+                }
+            }
+        }
+        return true;
     }
 }
 

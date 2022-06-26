@@ -1,8 +1,9 @@
 import * as gameboard from "../src/gameboard.js";
+const BOARDSIZE = 5;
 let testBoard;
 
 beforeEach(() => {
-    testBoard = gameboard.createGameboard(5);
+    testBoard = gameboard.createGameboard(BOARDSIZE);
 })
 
 
@@ -52,9 +53,7 @@ test("Adding a ship in an invalid location", () => {
 
 test("Adding a ship in a location that already has a ship", () => {
     testBoard.addShip(3,[3,2],"north");
-    expect(() => {
-        testBoard.addShip(2,[2,3],"west")
-    }).toThrow("A ship already exists in this position");
+    expect(testBoard.addShip(2,[2,3],"west")).toEqual(-1);
 })
 
 test("Receiving an attack with invalid coordinates on a board returns an error", () => {
@@ -121,4 +120,8 @@ test("A board with no active ship parts is considered sunk", () => {
     testBoard.receiveAttack(3,3);
     testBoard.receiveAttack(3,4);
     expect(testBoard.allShipsSunk()).toBeTruthy();
+})
+
+test("Randomly placing ships on the board places ships correctly", () => {
+    expect(testBoard.randomizeBoard(BOARDSIZE)).toBeTruthy();
 })
