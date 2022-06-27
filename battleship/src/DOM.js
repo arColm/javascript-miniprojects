@@ -43,6 +43,9 @@ function createGameboardElement(size) {
             let td = document.createElement("td");
             tr.appendChild(td);
             td.setAttribute("class","empty unhit");
+
+            td.addEventListener("click",e => {
+            })
         }
         table.appendChild(tr);
     }
@@ -63,11 +66,11 @@ function refreshBoard(game,player) {
     let board;
     let tableRows;
     switch(player) {
-        case player==="player":
+        case "player":
             board = game.getPlayerBoard().getBoard();
             tableRows = game.getPlayerBoardElement().firstChild.children;
             break;
-        case player==="computer":
+        case "computer":
             board = game.getComputerBoard().getBoard();
             tableRows = game.getComputerBoardElement().firstChild.children;
             break;
@@ -80,16 +83,18 @@ function refreshBoard(game,player) {
             let td = tableCells[x];
             let cell = board[y][x];
             switch(cell) {
-                case cell===0:
+                case 0:
                     td.setAttribute("class","empty unhit");
                     break;
-                case cell===1:
-                    td.setAttribute("class","ship, unhit");
+                case 1:
+                    if(player==="player") {
+                        td.setAttribute("class","ship unhit");
+                    }
                     break;
-                case cell===2:
+                case 2:
                     td.setAttribute("class","empty hit");
                     break;
-                case cell===3:
+                case 3:
                     td.setAttribute("class","ship hit");
                     break;
                 default:
@@ -99,6 +104,25 @@ function refreshBoard(game,player) {
     }
 }
 
+function addClickEvents(game) {
+    let board = game.getComputerBoard();
+    let tableRows = game.getComputerBoardElement().firstChild.children;
+    for(let row=0;row<BOARDSIZE;row++) {
+        let tableCells = tableRows[row].children;
+        for(let column=0;column<BOARDSIZE;column++) {
+            let td = tableCells[column];
+            td.addEventListener("click",e => {
+                if(td.getAttribute("class")==="empty unhit"||
+                td.getAttribute("class")==="ship unhit") {
+                    board.receiveAttack(column,row);
+                    refreshBoard(game,"computer");
+                }
+            })
+        }
+    }
+    return 0;
+
+}
 
 function initializeGame() {
     contentDiv.replaceChildren();
@@ -113,11 +137,14 @@ function initializeGame() {
     contentDiv.appendChild(playerBoardElement);
     contentDiv.appendChild(computerBoardElement);
 
-    return new Game(playerBoard,playerBoardElement,computerBoard,computerBoardElement);
+    computerBoard.randomizeBoard(BOARDSIZE);
+    let game = new Game(playerBoard,playerBoardElement,computerBoard,computerBoardElement);
+
+    addClickEvents(game);
+    return game;
 }
 
 
 export {
-    initializeGame,
-    randomizeCPUBoard
+    initializeGame
 }

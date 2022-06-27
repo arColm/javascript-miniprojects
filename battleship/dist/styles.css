@@ -8,6 +8,11 @@
     --background-color:rgb(105, 105, 105);
     --header-color:rgb(156,156,156);
     --cell-size:50px;
+
+    --empty-cell-color:blue;
+    --ship-cell-color:grey;
+    --empty-hit-cell-color:darkblue;
+    --ship-hit-cell-color:red;
 }
 
 td {
@@ -20,4 +25,20 @@ td {
 #content {
     display:flex;
     gap:200px;
+}
+
+.empty.unhit {
+    background-color:var(--empty-cell-color);
+}
+
+.empty.hit {
+    background-color:var(--empty-hit-cell-color);
+}
+
+.ship.unhit {
+    background-color:var(--ship-cell-color);
+}
+
+.ship.hit {
+    background-color:var(--ship-hit-cell-color);
 }
