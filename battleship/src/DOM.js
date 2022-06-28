@@ -1,6 +1,7 @@
 import * as Gameboard from "./gameboard.js";
 
 const contentDiv = document.querySelector("#content");
+const headerDiv = document.querySelector("#header");
 const BOARDSIZE = 6;
 
 /**
@@ -12,6 +13,7 @@ class Game {
         this.playerBoardElement=playerBoardElement;
         this.computerBoard=computerBoard;
         this.computerBoardElement=computerBoardElement;
+        this.inProgress = true;
     }
 
     getPlayerBoard() {
@@ -28,6 +30,11 @@ class Game {
 
     getComputerBoardElement() {
         return this.computerBoardElement;
+    }
+
+    finishGame() {
+        this.inProgress = false;
+        return this.inProgress;
     }
 }
 
@@ -104,6 +111,24 @@ function refreshBoard(game,player) {
     }
 }
 
+function checkWin(game) {
+    let computerBoard = game.getComputerBoard();
+    let playerBoard = game.getPlayerBoard();
+
+    let gameStatusText = headerDiv.firstChild;
+    if(computerBoard.allShipsSunk()) {
+        game.finishGame();
+        gameStatusText.innerHTML = "Player Wins";
+        return "player";
+    }
+    if(playerBoard.allShipsSunk()) {
+        game.finishGame();
+        gameStatusText.innerHTML = "Computer Wins";
+        return "computer";
+    }
+    return false;
+}
+
 function addClickEvents(game) {
     let computerBoard = game.getComputerBoard();
     let playerBoard = game.getPlayerBoard();
@@ -115,10 +140,13 @@ function addClickEvents(game) {
             td.addEventListener("click",e => {
                 if(td.getAttribute("class")==="empty unhit"||
                 td.getAttribute("class")==="ship unhit") {
-                    computerBoard.receiveAttack(column,row);
-                    refreshBoard(game,"computer");
-                    playerBoard.receiveRandomAttack(BOARDSIZE);
-                    refreshBoard(game,"player");
+                    if(game.inProgress) {
+                        computerBoard.receiveAttack(column,row);
+                        refreshBoard(game,"computer");
+                        playerBoard.receiveRandomAttack(BOARDSIZE);
+                        refreshBoard(game,"player");
+                        checkWin(game);
+                    }
 
                 }
             })
@@ -143,14 +171,38 @@ function initializeGame() {
     contentDiv.appendChild(playerBoardElement);
     contentDiv.appendChild(computerBoardElement);
 
+    playerBoard.randomizeBoard(BOARDSIZE);
+
     computerBoard.randomizeBoard(BOARDSIZE);
     let game = new Game(playerBoard,playerBoardElement,computerBoard,computerBoardElement);
 
+    refreshBoard(game,"player");
     addClickEvents(game);
+
     return game;
+}
+
+function initializeHeader() {
+    headerDiv.replaceChildren();
+
+    const gameStatus = document.createElement("h1");
+    headerDiv.appendChild(gameStatus);
+
+
+    const newGameButton = document.createElement("button");
+    newGameButton.setAttribute("type","button");
+    newGameButton.innerHTML = "New Game";
+    newGameButton.addEventListener("click", e=> {
+        initializeHeader();
+        initializeGame();
+    })
+
+
+    headerDiv.appendChild(newGameButton);
 }
 
 
 export {
-    initializeGame
+    initializeGame,
+    initializeHeader
 }
