@@ -88,7 +88,7 @@ class Gameboard {
 
     /**
      * This function takes in a pair of coordinates and tries to destroy a ship part
-     * at those coordinates, if there is one. If a ship part is destroyed, this function
+     * at those coordinates, if there is one. If the cell was unhit, this function
      * returns true. Otherwise returns false.
      * @param {Number} x 
      * @param {Number} y
@@ -106,8 +106,13 @@ class Gameboard {
         })) {
            return true; 
         } else {
-            this.board[y][x]=2;
-            return false;
+            if(this.board[y][x]===0) {
+                this.board[y][x]=2;
+                return true;
+            }
+            else if(this.board[y][x]===2 || this.board[y][x]===3) {
+                return false;
+            }
         }
     }
     
@@ -159,6 +164,15 @@ class Gameboard {
             }
         }
         return true;
+    }
+
+    receiveRandomAttack(BOARDSIZE) {
+        let attackReceived = false;
+        while(!attackReceived) {
+            let randomRow = Math.floor(Math.random()*BOARDSIZE);
+            let randomColumn = Math.floor(Math.random()*BOARDSIZE);
+
+        }
     }
 }
 

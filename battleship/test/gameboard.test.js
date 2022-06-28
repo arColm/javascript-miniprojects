@@ -65,7 +65,7 @@ test("Receiving an attack with invalid coordinates on a board returns an error",
 test("Receiving an attack with valid coordinates on an empty tile", () => {
     testBoard.addShip(3,[3,2],"north");
 
-    expect(testBoard.receiveAttack(2,3)).toBeFalsy();
+    expect(testBoard.receiveAttack(2,3)).toBeTruthy();
 
     let expectedShip = {
         length:3,
@@ -88,6 +88,50 @@ test("Receiving an attack with valid coordinates on an empty tile", () => {
 test("Receiving an attack with valid coordinates on a ship", () => {
     testBoard.addShip(3,[3,2],"north");
     expect(testBoard.receiveAttack(3,3)).toBeTruthy();
+    let expectedShip = {
+        length:3,
+        activePositions:[[3,2],[3,4]]
+    }
+    let expectedBoard = {
+        ships:[expectedShip],
+        size:5,
+        board: [
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,0,1,0],
+            [0,0,0,3,0],
+            [0,0,0,1,0]
+        ]
+    }
+    expect(testBoard).toEqual(expectedBoard);
+})
+
+test("Receiving an attack on an already hit empty tile returns false", () => {
+    testBoard.addShip(3,[3,2],"north");
+    testBoard.receiveAttack(2,2);
+    expect(testBoard.receiveAttack(2,2)).toBeFalsy();
+    let expectedShip = {
+        length:3,
+        activePositions:[[3,2],[3,3],[3,4]]
+    }
+    let expectedBoard = {
+        ships:[expectedShip],
+        size:5,
+        board: [
+            [0,0,0,0,0],
+            [0,0,0,0,0],
+            [0,0,2,1,0],
+            [0,0,0,1,0],
+            [0,0,0,1,0]
+        ]
+    }
+    expect(testBoard).toEqual(expectedBoard);
+})
+
+test("Receiving an attack on an already hit ship tile returns false", () => {
+    testBoard.addShip(3,[3,2],"north");
+    testBoard.receiveAttack(3,3);
+    expect(testBoard.receiveAttack(3,3)).toBeFalsy();
     let expectedShip = {
         length:3,
         activePositions:[[3,2],[3,4]]
