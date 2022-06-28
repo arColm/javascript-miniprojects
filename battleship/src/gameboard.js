@@ -165,13 +165,21 @@ class Gameboard {
         }
         return true;
     }
-
+    
+    /**
+     * This function causes a random valid attack on an unhit tile of
+     * the board
+     * @param {Number} BOARDSIZE 
+     */
     receiveRandomAttack(BOARDSIZE) {
         let attackReceived = false;
         while(!attackReceived) {
             let randomRow = Math.floor(Math.random()*BOARDSIZE);
             let randomColumn = Math.floor(Math.random()*BOARDSIZE);
-
+            if(this.receiveAttack(randomColumn,randomRow)) {
+                attackReceived = true;
+                return true;
+            }
         }
     }
 }

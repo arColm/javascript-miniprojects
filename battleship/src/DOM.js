@@ -105,7 +105,8 @@ function refreshBoard(game,player) {
 }
 
 function addClickEvents(game) {
-    let board = game.getComputerBoard();
+    let computerBoard = game.getComputerBoard();
+    let playerBoard = game.getPlayerBoard();
     let tableRows = game.getComputerBoardElement().firstChild.children;
     for(let row=0;row<BOARDSIZE;row++) {
         let tableCells = tableRows[row].children;
@@ -114,8 +115,11 @@ function addClickEvents(game) {
             td.addEventListener("click",e => {
                 if(td.getAttribute("class")==="empty unhit"||
                 td.getAttribute("class")==="ship unhit") {
-                    board.receiveAttack(column,row);
+                    computerBoard.receiveAttack(column,row);
                     refreshBoard(game,"computer");
+                    playerBoard.receiveRandomAttack(BOARDSIZE);
+                    refreshBoard(game,"player");
+
                 }
             })
         }
@@ -123,6 +127,8 @@ function addClickEvents(game) {
     return 0;
 
 }
+
+
 
 function initializeGame() {
     contentDiv.replaceChildren();

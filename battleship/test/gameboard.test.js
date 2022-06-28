@@ -169,3 +169,10 @@ test("A board with no active ship parts is considered sunk", () => {
 test("Randomly placing ships on the board places ships correctly", () => {
     expect(testBoard.randomizeBoard(BOARDSIZE)).toBeTruthy();
 })
+
+test("Randomly receiving an attack returns true on success", () => {
+    testBoard.addShip(3,[3,2],"north");
+    expect(testBoard.receiveRandomAttack(BOARDSIZE)).toBeTruthy();
+    expect(testBoard.receiveRandomAttack(BOARDSIZE)).toBeTruthy();
+    expect(testBoard.receiveRandomAttack(BOARDSIZE)).toBeTruthy();
+})
