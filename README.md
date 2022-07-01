@@ -20,3 +20,5 @@ Collection of small javascript projects
 **weather-app** : Simple website to display weather information for a location. Practicing utilization of APIs.
 
 **battleship** : Game of battleship where the player plays against a computer. Primarily practicing simple TDD principles.
+
+**cv-application** : form to submit basic personal information. practicing basics of React

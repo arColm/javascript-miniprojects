@@ -1,0 +1,22 @@
+npm init --> generates package.json
+
+npm install webpack webpack-cli --save-dev    --> installs webpack to node_modules
+
+npx webpack --watch  --> builds main.js in ./dist
+
+
+
+
+
+Tests
+
+npm install --save-dev jest
+    - installs jest
+
+jest
+    - runs all tests
+
+React
+
+npx create-react-app {project name}
+    -  creates react project
