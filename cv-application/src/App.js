@@ -13,16 +13,12 @@ class App extends Component {
       email:"",
       phoneNumber:""
     }
-    this.onChange = this.onChange.bind(this);
   }
 
-  onChange(data) {
-    for(const property in data) {
-      this.setState({
-        [property]:data[property]
-      })
-      console.log(this.state);
-    }
+  onChange=e => {
+    this.setState({
+      [e.target.id]:e.target.value
+    })
   }
 
   render() {

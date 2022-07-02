@@ -5,15 +5,11 @@ class GeneralInformationForm extends Component {
     constructor(props) {
         super(props);
 
-        this.reset();
-    }
-
-    reset= () => {
-        this.setState({
+        this.state = {
             name:"",
             email:"",
             phoneNumber:""
-        });
+        }
     }
 
     handleChange = (e) => {
@@ -21,7 +17,7 @@ class GeneralInformationForm extends Component {
             [e.target.id]:e.target.value
         }, () => {
             if(this.props.onChange) {
-                this.props.onChange(this.state);
+                this.props.onChange(e);
             }
         })
     }
