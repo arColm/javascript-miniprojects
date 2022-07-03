@@ -8,7 +8,6 @@ class PracticalExperienceOverview extends Component {
         super(props);
 
         this.state = {
-            experience:[],
             currentExperience: {
                 companyName:"",
                 positionTitle:"",
@@ -33,34 +32,31 @@ class PracticalExperienceOverview extends Component {
         const {companyName,positionTitle,mainTasks,startDate,endDate} = this.state.currentExperience;
         if(companyName!==""&&positionTitle!==""&&mainTasks!==""&&startDate!==""&&endDate!=="") {
             const newExperience = Object.assign({},this.state.currentExperience);
-            newExperience.id=this.state.experience.length;
+            newExperience.id=this.props.experience.length;
+
+            this.props.addExperience(newExperience);
             this.setState({
-                experience:this.state.experience.concat(newExperience),
                 currentExperience: {
                     companyName:"",
                     positionTitle:"",
                     mainTasks:"",
                     startDate:"",
                     endDate:"",
-                    id:this.state.experience.length+1
+                    id:this.props.experience.length+1
                 }
-            },() => {
-                console.log(this.state.experience)
             })
         }
     }
 
     onDelete = id => {
-        const newExperience = this.state.experience.slice();
+        const newExperience = this.props.experience.slice();
         const index = id;
         newExperience.splice(index,1);
         //Reassign id's based on new array index
         newExperience.forEach((element,i) => {
             element["id"]=i;
         })
-        this.setState({
-            experience:newExperience
-        })
+        this.props.changeExperience(newExperience);
     }
 
     render() {
@@ -68,7 +64,7 @@ class PracticalExperienceOverview extends Component {
         return (
             <div>
                 <PracticalExperience 
-                    experience={this.state.experience}
+                    experience={this.props.experience}
                     onDelete={this.onDelete}/>
                 <PracticalExperienceForm 
                     companyName={this.state.currentExperience["companyName"]}

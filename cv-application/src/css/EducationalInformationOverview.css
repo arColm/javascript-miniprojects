@@ -1,0 +1,55 @@
+
+
+form {
+    display:grid;
+    grid-template-areas:
+    "name date"
+    "title title"
+    "button button";
+    overflow:visible;
+}
+input {
+    width:80%;
+}
+
+.schoolName {
+    grid-area: name;
+}
+
+.titleOfStudy {
+    grid-area:title;
+}
+
+.dateStudied {
+    grid-area:date;
+}
+
+button {
+    grid-area:button;
+    width:250px;
+    height:50px;
+}
+
+.overview > div{
+    display:grid;
+    grid-template-areas:
+    "name date"
+    "title button";
+    grid-template-columns: 50% 50%;
+    align-items:flex-end;
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid black;
+}
+.overview> div > div {
+    overflow:hidden;
+}
+.overview > div > button {
+    width:100px;
+    height:25px;
+}
+
+h3 {
+    font-weight:bolder;
+    font-size:x-large;
+}

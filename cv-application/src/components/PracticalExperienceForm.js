@@ -1,11 +1,6 @@
 import React, {Component} from "react";
 
 class PracticalExperienceForm extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     handleChange = e => {
         if(this.props.onChange) {
             this.props.onChange(e);

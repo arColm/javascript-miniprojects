@@ -20,16 +20,25 @@ class EducationalInformationForm extends Component {
         
         return (
             <div>
-                <label htmlFor="schoolName">School Name</label>
-                <input id="schoolName" value={this.props.schoolName} type="text" onChange={(e) => this.handleChange(e)}></input>
+                <form>
+                    <div className="schoolName">
+                        <label htmlFor="schoolName">School Name</label>
+                        <input id="schoolName" value={this.props.schoolName} type="text" onChange={(e) => this.handleChange(e)}></input>
+                    </div>
+                    
+                    <div className="titleOfStudy">
+                        <label htmlFor="titleOfStudy">Title of Study</label>
+                        <input id="titleOfStudy" value={this.props.titleOfStudy} type="text" onChange={(e) => this.handleChange(e)}></input>
+                    </div>
+                    
+                    <div className="dateStudied">
+                        <label htmlFor="dateStudied">Date Finished Studies</label>
+                        <input id="dateStudied" value={this.props.dateStudied} type="date" onChange={(e) => this.handleChange(e)}></input>
+                    </div>
+                    
+                    <button type="button" onClick={() => this.onSubmit()}>Create New Education</button>
+                </form>
                 
-                <label htmlFor="titleOfStudy">Title of Study</label>
-                <input id="titleOfStudy" value={this.props.titleOfStudy} type="text" onChange={(e) => this.handleChange(e)}></input>
-
-                <label htmlFor="dateStudied">Date Finished Studies</label>
-                <input id="dateStudied" value={this.props.dateStudied} type="date" onChange={(e) => this.handleChange(e)}></input>
-
-                <button type="button" onClick={() => this.onSubmit()}>Create New Education</button>
             </div>
         )
     }

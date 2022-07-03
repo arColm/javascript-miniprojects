@@ -2,10 +2,6 @@ import React, {Component} from "react";
 
 class PracticalExperience extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
     onDelete = id => {
         if(this.props.onDelete){
             this.props.onDelete(id);
