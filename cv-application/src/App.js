@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import GeneralInformationForm from "./components/GeneralInformationForm.js";
-import EducationalInformationForm from "./components/EducationalInformationForm.js";
+import EducationalInformationOverview from "./components/EducationalInformationOverview.js";
 import PracticalExperienceForm from "./components/PracticalExperienceForm.js";
 
 class App extends Component {
@@ -21,6 +21,15 @@ class App extends Component {
     })
   }
 
+  nextSection = () => {
+    if(this.state.currentSection<3) {
+      console.log("AA");
+      this.setState({
+        currentSection:this.state.currentSection+1
+      })
+    }
+  }
+
   render() {
 
     let currentForm;
@@ -29,7 +38,7 @@ class App extends Component {
         currentForm = <GeneralInformationForm onChange={this.onChange}/>;
         break;
       case 2:
-        currentForm = <EducationalInformationForm />;
+        currentForm = <EducationalInformationOverview />;
         break;
       case 3:
         currentForm = <PracticalExperienceForm />;
@@ -41,7 +50,7 @@ class App extends Component {
         Hello World
         {currentForm}
         
-        <button type="button">Next Section</button>
+        <button type="button" onClick={this.nextSection}>Next Section</button>
       </div>
     );
   }
