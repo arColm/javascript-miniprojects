@@ -2,11 +2,9 @@ import React, {Component} from "react";
 
 class EducationalInformation extends Component {
 
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-
+    onDelete= id => {
+        if(this.props.onDelete) {
+            this.props.onDelete(id);
         }
     }
 
@@ -23,6 +21,7 @@ class EducationalInformation extends Component {
                             <h4>{data.titleOfStudy}</h4>
                             <h3>Date of Study</h3>
                             <h4>{data.dateStudied}</h4>
+                            <button type="button" onClick={() => this.onDelete(data.id)}>Delete</button>
                         </div>
                     );
                 })}
@@ -31,4 +30,4 @@ class EducationalInformation extends Component {
     }
 };
 
-export default EducationalInformation;
+export default Information;

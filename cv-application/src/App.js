@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import GeneralInformationForm from "./components/GeneralInformationForm.js";
 import EducationalInformationOverview from "./components/EducationalInformationOverview.js";
-import PracticalExperienceForm from "./components/PracticalExperienceForm.js";
+import PracticalExperienceOverview from "./components/PracticalExperienceOverview.js";
 
 class App extends Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class App extends Component {
         currentForm = <EducationalInformationOverview />;
         break;
       case 3:
-        currentForm = <PracticalExperienceForm />;
+        currentForm = <PracticalExperienceOverview />;
         break;
     }
 

@@ -30,27 +30,48 @@ class EducationalInformationOverview extends Component {
     onSubmit = () => {
         let {currentEducation} = this.state;
         if(currentEducation["schoolName"]!=="" && currentEducation["titleOfStudy"]!=="" && currentEducation["dateStudied"]!=="") {
+            const newEducation = Object.assign({},currentEducation);
+            newEducation.id=this.state.education.length;
             this.setState({
-                education:this.state.education.concat(currentEducation),
+                education:this.state.education.concat(newEducation),
                 currentEducation: {
                     schoolName:"",
                     titleOfStudy:"",
                     dateStudied:"",
-                    id:this.state.education.length
+                    id:this.state.education.length+1
                 }
-            }, () => {
-
-                console.log(this.state);    
             })
         }
     }
 
+    onDelete= (id) => {
+        //Remove the education with given id from list.
+        const newEducation = this.state.education.slice();
+        const index = id;
+        newEducation.splice(index,1);
+        //Reassign id's based on new array index
+        newEducation.forEach((element,i) => {
+            element["id"]=i;
+        })
+        this.setState({
+            education:newEducation
+        })
+    }
+
+    
     render() {
         
         return (
             <div>
-                <EducationalInformation education={this.state.education} />
-                <EducationalInformationForm onChange={e => this.onChange(e)} onSubmit={() => this.onSubmit()}/>
+                <EducationalInformation 
+                    education={this.state.education}
+                    onDelete={() => this.onDelete()} />
+                <EducationalInformationForm 
+                    schoolName={this.state.currentEducation["schoolName"]}
+                    titleOfStudy={this.state.currentEducation["titleOfStudy"]}
+                    dateStudied={this.state.currentEducation["dateStudied"]}
+                    onChange={e => this.onChange(e)} 
+                    onSubmit={() => this.onSubmit()}/>
                 
             </div>
         )
