@@ -20,7 +20,7 @@ class EducationalInformationForm extends Component {
         
         return (
             <div>
-                <form>
+                <form className="educationalInformationForm">
                     <div className="schoolName">
                         <label htmlFor="schoolName">School Name</label>
                         <input id="schoolName" value={this.props.schoolName} type="text" onChange={(e) => this.handleChange(e)}></input>

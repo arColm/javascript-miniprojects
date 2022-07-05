@@ -10,7 +10,7 @@ class EducationalInformation extends Component {
 
     render() {
         return (
-            <div class="overview">
+            <div class="educationalOverview">
                 {this.props.education.map((data) => {
                     return (
                         <div key={data.id}>

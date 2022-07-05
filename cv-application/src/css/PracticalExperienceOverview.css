@@ -1,0 +1,65 @@
+
+form.practicalExperienceForm {
+    display:grid;
+    grid-template-areas:
+    "name title"
+    "tasks tasks"
+    "start end"
+    "button .";
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 25% 25% 25% 25%;
+}
+
+input {
+    width:80%;
+}
+
+.companyName {
+    grid-area:name;
+}
+
+.positionTitle {
+    grid-area:title;
+}
+
+.mainTasks {
+    grid-area:tasks;
+}
+
+.startDate {
+    grid-area:start;
+}
+
+.endDate{
+    grid-area:end;
+}
+
+.practicalExperienceForm button {
+    grid-area:button;
+    width:250px;
+    height:50px;
+}
+
+.practicalOverview >div {
+    display:grid;
+    grid-template-areas:
+    "name title"
+    "tasks tasks"
+    "start end"
+    ". button";
+    grid-template-columns: 50% 50%;
+    align-items:flex-end;
+    padding-bottom:20px;
+    margin-bottom:20px;
+    border-bottom:1px solid black;
+}
+
+.practicalOverview> div > div {
+    overflow:hidden;
+}
+
+.practicalOverview > div > button {
+    width:100px;
+    height:25px;
+}
+

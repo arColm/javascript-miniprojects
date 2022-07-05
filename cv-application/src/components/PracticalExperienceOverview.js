@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import PracticalExperience from "./PracticalExperience";
 import PracticalExperienceForm from "./PracticalExperienceForm";
 
+import "../css/PracticalExperienceOverview.css";
+
 class PracticalExperienceOverview extends Component {
 
     constructor(props) {
