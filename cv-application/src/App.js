@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import GeneralInformationForm from "./components/GeneralInformationForm.js";
 import EducationalInformationOverview from "./components/EducationalInformationOverview.js";
 import PracticalExperienceOverview from "./components/PracticalExperienceOverview.js";
+import Review from "./components/Review.js";
 
 import "./css/App.css";
 
@@ -98,7 +99,12 @@ class App extends Component {
 
       case 4:
         currentForm = (
-          <h1>This will display your information</h1>
+          <Review 
+            name={this.state.name}
+            email={this.state.email}
+            phoneNumber={this.state.phoneNumber}
+            experience={this.state.experience}
+            education={this.state.education}/>
         )
         break;
       default:
