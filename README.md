@@ -22,3 +22,5 @@ Collection of small javascript projects
 **battleship** : Game of battleship where the player plays against a computer. Primarily practicing simple TDD principles.
 
 **cv-application** : form to submit basic personal information. practicing basics of React
+
+**memory-game** : memory game similar to visual memory test on Human Benchmark. practicing basics of React -- using functional components, hooks
