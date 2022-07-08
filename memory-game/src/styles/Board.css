@@ -1,0 +1,28 @@
+* {
+
+    --revealed-color:lightblue;
+    --hidden-color:blue;
+}
+
+
+
+.board {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.board > div {
+    display:flex;
+    gap:10px;
+}
+
+.tile {
+    width:100px;
+    height:100px;
+    background-color:var(--hidden-color);
+}
+
+.tile.revealed {
+    background-color:var(--revealed-color)
+}
