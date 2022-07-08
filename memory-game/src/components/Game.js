@@ -25,7 +25,7 @@ const Game = () => {
             <h1>Score: {level}</h1>
             <Board 
                 level={level}
-                incrementLevel={incrementLevel}/>
+                incrementLevel={() => incrementLevel()}/>
         </div>
     )
 }

@@ -2,6 +2,7 @@
 
     --revealed-color:lightblue;
     --hidden-color:blue;
+    --clicked-color:darkblue;
 }
 
 
@@ -23,6 +24,15 @@
     background-color:var(--hidden-color);
 }
 
+.tile.clicked {
+    background-color:var(--clicked-color);
+}
+
+.tile.hidden {
+    transform:rotateY("180");
+    transition:background-color 1s;
+}
+
 .tile.revealed {
-    background-color:var(--revealed-color)
+    background-color:var(--revealed-color);
 }
