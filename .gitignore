@@ -8,6 +8,6 @@ battleship/node_modules/*
 
 cv-application/node_modules/*
 
-
 .gitignore
 .gitignore
+cheatsheet.txt
