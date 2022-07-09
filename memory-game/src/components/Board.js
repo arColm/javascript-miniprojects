@@ -64,10 +64,13 @@ const Board = (props) => {
     const clickTile = (row,column) => {
         let tempBoard = board.slice();
         if(board[row][column]===1) {
+            //Clicked a correct tile
             tempBoard[row][column]=2;
             decrementRemainingTiles();
         } else if(board[row][column]===0) {
+            //Clicked a wrong tile
             tempBoard[row][column]=3;
+            props.loseGame();
         }
         console.log(remainingTiles);
         console.log(board);
