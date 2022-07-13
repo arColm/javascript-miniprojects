@@ -24,3 +24,5 @@ Collection of small javascript projects
 **cv-application** : form to submit basic personal information. practicing basics of React
 
 **memory-game** : memory game similar to visual memory test on Human Benchmark. practicing basics of React -- using functional components, hooks
+
+**shopping-cart** : simple shop with shopping cart webpage. Practicing react-router and react tests, mocking components
